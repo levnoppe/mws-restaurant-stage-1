@@ -161,10 +161,10 @@ createRestaurantHTML = (restaurant) => {
   var large = photo.replace('.jpg','-large.jpg')
 
   image.src = small
-  // image.srcset='"' & large & ' 600w, ' & medium & ' 450w, ' & small & ' 320w' & '"'
   var setString = `${large} 600w, ${medium} 450w, ${small} 300w `
+  var sizeString = "33vw"
   image.srcset= setString
-  image.sizes="100vw"
+  image.sizes = sizeString
   li.append(image);
 
   const name = document.createElement('h1');
