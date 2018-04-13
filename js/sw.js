@@ -1,5 +1,6 @@
 // self.addEventListener('fetch', function(event) {
 //   console.log(event.request);
+ 
 // });
 
 self.addEventListener('install', function(event) {
@@ -22,8 +23,11 @@ self.addEventListener('install', function(event) {
         'img/9.jpg',
         'img/10.jpg',
         'data/restaurants.json',
-        '//normalize-css.googlecode.com/svn/trunk/normalize.css'
+        '//normalize-css.googlecode.com/svn/trunk/normalize.css',
+        'index.html', 
+        'restaurant.html'
       ]);
+      
     })
   );
 });
@@ -40,9 +44,11 @@ self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
+        console.log("yo");
         // Cache hit - return response
         if (response) {
           return response;
+          
         }
 
         // IMPORTANT: Clone the request. A request is a stream and

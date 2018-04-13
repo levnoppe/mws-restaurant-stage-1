@@ -9,7 +9,7 @@ var markers = []
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('js/sw.js').then(function(registration) {
+    navigator.serviceWorker.register('sw2.js').then(function(registration) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
@@ -154,7 +154,17 @@ createRestaurantHTML = (restaurant) => {
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  //image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  var photo =  DBHelper.imageUrlForRestaurant(restaurant);
+  var small = photo.replace('.jpg','-small.jpg')
+  var medium = photo.replace('.jpg','-medium.jpg')
+  var large = photo.replace('.jpg','-large.jpg')
+
+  image.src = small
+  // image.srcset='"' & large & ' 600w, ' & medium & ' 450w, ' & small & ' 320w' & '"'
+  var setString = `${large} 600w, ${medium} 450w, ${small} 300w `
+  image.srcset= setString
+  image.sizes="100vw"
   li.append(image);
 
   const name = document.createElement('h1');
