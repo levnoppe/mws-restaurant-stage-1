@@ -162,26 +162,37 @@ createRestaurantHTML = (restaurant) => {
 
   image.src = small
   var setString = `${large} 600w, ${medium} 450w, ${small} 300w `
-  var sizeString = "33vw"
+  var sizeString = "100vw"
   image.srcset= setString
   image.sizes = sizeString
+
+  image.alt =  `Image of ${restaurant.name} restaurant` 
+
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
+  name.tabIndex=0;
+  name.id="restaurant-name"
   li.append(name);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
+  neighborhood.tabIndex=0;
   li.append(neighborhood);
 
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
+  address.setAttribute('tabIndex', '0');
+  address.setAttribute('area-label', 'address');
+  address.setAttribute('role', 'address');
   li.append(address);
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.setAttribute('aria-labelledby', 'restaurant-name');
+  more.setAttribute('area-label', 'details-link');
   li.append(more)
 
   return li
