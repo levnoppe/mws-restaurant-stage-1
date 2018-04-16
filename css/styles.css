@@ -48,6 +48,31 @@ header{
 
 } */
 
+.skip-link {
+  position: absolute;
+  top:-40px;
+  left:0;
+
+}
+
+a:focus{
+outline: 0;  
+}
+h1:focus{
+  outline:0;
+}
+h2:focus{
+  outline:0;
+}
+p:focus{
+  outline:0;
+}
+img:focus{
+  outline:0;
+}
+table:focus{
+  outline:0;
+}
 #maincontent {
   background-color: #f3f3f3;
   min-height: 100%;
@@ -80,15 +105,18 @@ nav h1 a {
   text-transform: uppercase;
 }
 #breadcrumb {
-    padding: 10px 40px 16px;
+    padding: 10px 10px 16px;
     list-style: none;
     background-color: #eee;
-    font-size: 2em;
+    font-size: 1.6em;
     margin: 0;
     /*width: calc(50% - 80px);*/
     width:100%;
 }
 
+#info-label{
+  font-size: 0.7em;
+}
 /* Display list items side by side */
 #breadcrumb li {
     display: inline;
@@ -96,7 +124,7 @@ nav h1 a {
 
 /* Add a slash symbol (/) before/behind each list item */
 #breadcrumb li+li:before {
-    padding: 8px;
+    padding: 4px;
     color: black;
     content: "/\00a0";
 }
@@ -290,7 +318,7 @@ nav h1 a {
   width: 100%;
   max-width: 630px;
   max-height: 300px;
-  height: auto;
+  height: 300px;
   object-fit: cover;
 }
 #restaurant-address {
@@ -380,8 +408,7 @@ table-layout: fixed;
   width:40%;
 }
 
-
-@media screen and (max-width:654px){
+@media screen  and (max-width:445px){
   .filter-options h2 {
    width:100%;
    margin: 0;
@@ -392,12 +419,54 @@ table-layout: fixed;
   padding-top: 0;
   }
 
+#breadcrumb{
+  font-size: 1.2em;
+  padding-left:2px !important;
+  padding-right:2px !important;
+}
+
   #reviews-list li {
     width:100%;
     margin-bottom: 15px;
     margin-right: 1%;
     margin-left:1%;
     
+    }
+    #info-label{
+      letter-spacing:2px; 
+      font-size: 0.5em;
+    }
+}
+
+
+
+@media screen and (min-width:446px) and (max-width:654px){
+  .filter-options h2 {
+   width:100%;
+   margin: 0;
+
+  }
+  .filter-options select {
+  margin-top: 0;
+  padding-top: 0;
+  }
+
+#breadcrumb{
+  font-size: 1.2em;
+  padding-left:2px;
+  padding-right:2px;
+}
+
+  #reviews-list li {
+    width:100%;
+    margin-bottom: 15px;
+    margin-right: 1%;
+    margin-left:1%;
+    
+    }
+    #info-label{
+      letter-spacing:5px; 
+
     }
 }
 
@@ -408,7 +477,10 @@ table-layout: fixed;
       margin-bottom: 15px;
       margin-right: 1%;
       margin-left:1%;
-      
+      }
+      #info-label{
+        letter-spacing:5px; 
+  
       }
   }
 
@@ -480,20 +552,21 @@ width:100%;
   width:100%;
 }
   .inside #map-container {
-    margin: 236px 0 0 10px ;
-    width:30%;
+    margin: 100px 0 0 10px ;
+    width:calc(30% - 30px);
     order:0;
   }
   #restaurant-container{
-    width:65%;
+    width:70%;
     order:-1;
   }
   #review-container{
-    width:100%;      
+    width:100%;
+    order:1;      
   }
 
   #restaurant-name {
-    margin: 180px 7px 30px;
+    margin: 100px 7px 30px;
   }
   #restaurant-image-container{
     width:48%;
