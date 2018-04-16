@@ -1,11 +1,11 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-   '/',
+  '/',
   'js/main.js',
   //'js/sw2.js',
-    'js/restaurant_info.js',
-    'js/dbhelper.js',
-    'css/styles.css',
+  'js/restaurant_info.js',
+  'js/dbhelper.js',
+  'css/styles.css',
   'img/1-small.jpg',
   'img/2-small.jpg',
   'img/3-small.jpg',
@@ -37,17 +37,27 @@ var urlsToCache = [
   'img/9-large.jpg',
   'img/10-large.jpg',
   'data/restaurants.json',
-   //'//normalize-css.googlecode.com/svn/trunk/normalize.css',
-   'index.html', 
-    'restaurant.html'
+  'restaurant.html?id=1',
+  'restaurant.html?id=2',
+  'restaurant.html?id=3',
+  'restaurant.html?id=4',
+  'restaurant.html?id=5',
+  'restaurant.html?id=6',
+  'restaurant.html?id=7',
+  'restaurant.html?id=8',
+  'restaurant.html?id=9',
+  'restaurant.html?id=10',
+  //'//normalize-css.googlecode.com/svn/trunk/normalize.css',
+  'index.html',
+  'restaurant.html'
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
   // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(function(cache) {
-        console.log('Opened cache');        
+      .then(function (cache) {
+        console.log('Opened cache');
         return cache.addAll(urlsToCache);
         console.log(cache);
       })
@@ -63,7 +73,7 @@ self.addEventListener('install', function(event) {
 //         // Cache hit - return response
 //         if (response) {
 //           return response;
-          
+
 //         }
 //         return fetch(event.request);
 //       }
@@ -71,14 +81,26 @@ self.addEventListener('install', function(event) {
 //   );
 // });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', function (event) {
+//   const url = new URL(event.request.url);
+// console.log(url);
+//   if (url.pathname.startsWith('/restaurant.html')) {
+//     event.respondWith(
+//       caches.match('restaurant.html')
+//         .then(response => response || fetch(event.request))
+//     );
+//     return;
+//   };
+
+
+
   event.respondWith(
     caches.match(event.request)
-      .then(function(response) {
+      .then(function (response) {
         // Cache hit - return response
         if (response) {
           return response;
-        }
+        };
 
         // IMPORTANT: Clone the request. A request is a stream and
         // can only be consumed once. Since we are consuming this
@@ -87,9 +109,9 @@ self.addEventListener('fetch', function(event) {
         var fetchRequest = event.request.clone();
 
         return fetch(fetchRequest).then(
-          function(response) {
+          function (response) {
             // Check if we received a valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
+            if (!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
 
@@ -100,7 +122,7 @@ self.addEventListener('fetch', function(event) {
             var responseToCache = response.clone();
 
             caches.open(CACHE_NAME)
-              .then(function(cache) {
+              .then(function (cache) {
                 cache.put(event.request, responseToCache);
               });
 
@@ -108,5 +130,5 @@ self.addEventListener('fetch', function(event) {
           }
         );
       })
-    );
+  );
 });

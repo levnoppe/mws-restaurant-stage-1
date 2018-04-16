@@ -12,17 +12,20 @@
 </head>
 
 <body class="inside">
+   
   <!-- Beginning header -->
   <header>
     <!-- Beginning nav -->
     <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+      <h1><a href="/" id="info-label" tabindex="-1" aria-label="link to the main page">Restaurant Reviews</a></h1>
+      <a href="#restaurant-container" class="skip-link">Skip to info</a> 
+       <!-- Beginning breadcrumb -->
+       <ul id="breadcrumb" >
+        <li><a href="/" tabindex="-1">Home</a></li>
+      </ul>
+      <!-- End breadcrumb -->
     </nav>
-    <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
-      <li><a href="/">Home</a></li>
-    </ul>
-    <!-- End breadcrumb -->
+
     <!-- End nav -->
   </header>
   <!-- End header -->
@@ -30,21 +33,21 @@
   <!-- Beginning main -->
   <main id="maincontent">
     <!-- Beginning map -->
-    <section id="map-container">
-      <div id="map"></div>
+    <section id="map-container" tabindex="-1">
+      <div id="map" role="application"  tabindex="-1"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container">
-      <h1 id="restaurant-name"></h1>
+      <h2 id="restaurant-name"></h2>
       <div class="container" id="restaurant-image-container">
-         <img id="restaurant-img">
-         <p id="restaurant-cuisine"></p>
-         <p id="restaurant-address"></p>
+         <img id="restaurant-img" tabindex="0">
+         <p id="restaurant-cuisine" tabindex="0"></p>
+         <p id="restaurant-address" tabindex="0"></p>
      </div>
       
       
-      <table id="restaurant-hours"></table>
+      <table id="restaurant-hours" tabindex="0"></table>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
@@ -57,7 +60,7 @@
 
   <!-- Beginning footer -->
   <footer id="footer">
-    Copyright (c) 2017 &nbsp <a href="/"><strong>Restaurant Reviews</strong></a>&nbsp All Rights Reserved.
+    Copyright (c) 2017 &nbsp <a href="/" aria-label="link to the main page"><strong>Restaurant Reviews</strong></a>&nbsp All Rights Reserved.
   </footer>
   <!-- End footer -->
 
